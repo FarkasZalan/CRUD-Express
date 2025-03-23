@@ -10,6 +10,7 @@ export const getUserByIdService = async (id: number) => {
     return result.rows[0];
 }
 
+// Returning * = return all rows that was affected by the query e.g if one user was created, updated or deleted then it will return with that row from the database
 export const createUserService = async (email: string, name: string) => {
     const result = await pool.query("INSERT INTO users (email, name) VALUES ($1, $2) RETURNING *", [email, name]);
     return result.rows[0];
